@@ -45,12 +45,31 @@ public class Time24
 	 * @see 	https://www.freecodecamp.org/news/mathematics-converting-am-pm-to-24-hour-clock/
 	 * @note	(12 am and 12 pm are special cases)
 	 */
+	
 	public static Time24 toTime24(int hours, int minutes, AmPm am_pm)
 	{
-		Time24 time=null;
+		Time24 time = null;
+
 		//Todo : add your code here
-
-
+		
+		if(am_pm == AmPm.am) {
+			if(hours == 12) {
+				time.hours = hours - 12;
+				time.minutes = minutes;
+				return time;
+			} else {
+				time.hours = hours;
+				time.minutes = minutes;
+				return time;
+			}
+		} else if(am_pm == AmPm.pm) {
+			if(hours < 12 || hours >= 1) {
+				time.hours = hours + 12;
+				time.minutes = minutes;
+				return time;
+			}
+		}
+		
 		// End of your code
 		return time;
 	}

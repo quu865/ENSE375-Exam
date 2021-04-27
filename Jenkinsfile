@@ -3,13 +3,8 @@ pipeline {
 	
 	stages {
 		stage ('Build Stage') {
-			
 			steps {
-				withMaven(maven : 'maven_3_8_1' ){
-					sh 'maven clean build'
-				
-				}
-				
+				sh "maven clean build"
 			}
 		}
 	

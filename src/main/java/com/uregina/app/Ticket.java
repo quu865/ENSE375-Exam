@@ -16,9 +16,9 @@ public class Ticket
 	 * The function checks the validaity of a ticket
 	 * It checks
 	 *		1. airports code are in IATA format (any three uppercases letters)
-	 *		2. maximum flights Count <= number of flights in the ticket
-	 *		3. maximum flight time <= Total flight times ( sum of flight time of each flight)
-	 *		4. maximum layover time <= Total layover times ( sum of layover time between each consequative flight)
+	 *		2. maximum flights Count >= number of flights in the ticket
+	 *		3. maximum flight time >= Total flight times ( sum of flight time of each flight)
+	 *		4. maximum layover time >= Total layover times ( sum of layover time between each consequative flight)
 	 *		5. no flight between two airports in the Schengen area unless the passenger has a valid SchengenVisa
 	 *		6. no cyclic trip
 	 *		7. The sequence of flights in correct ( the arrival airport of a flight is the departure airport of the next flight)

@@ -19,7 +19,7 @@ public class Time12
 	*/
     public Time12 (int hours, int minutes, AmPm am_pm) throws InvalidTimeException
     {
-		if(hours<1||hours>=12) throw new InvalidTimeException();
+		if(hours<1||hours>12) throw new InvalidTimeException();
 		if(minutes<0||minutes>=60) throw new InvalidTimeException();
         this.hours=hours;
 		this.minutes=minutes;
