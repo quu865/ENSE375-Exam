@@ -3,11 +3,13 @@ package com.uregina.app;
 import com.uregina.exceptions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 /**
  * Class Ticket, a List of Flights in ordered sequences
  */
 public class Ticket
 {
+	
 	
 	private static final String [] SchengenAirportsCode = new String[] { "VIE","BRU","PRG","CPH","TLL","HEL","CDG","FRA","MUC","ATH","BUD","KEF","CIA","RIX","VNO","LUX","MLA","AMS","OSL","WAW","LIS","LJU","KSC","MAD","ARN","BRN"};
 	/**
@@ -38,6 +40,7 @@ public class Ticket
 	{
 		//Todo: add your code here
 		
+				
 
 		//end of your code
 		return true;
@@ -55,8 +58,10 @@ public class Ticket
 	{
 		//Todo : add your code here
 		
+		
 
 		//Todo : end of your code
+
 		return false;
 	}
 }
