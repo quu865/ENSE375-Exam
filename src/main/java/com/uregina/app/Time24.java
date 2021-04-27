@@ -57,16 +57,20 @@ public class Time24
 				time.hours = hours - 12;
 				time.minutes = minutes;
 				return time;
-			} else {
+			} else if(hours < 12 && hours > 0){
 				time.hours = hours;
 				time.minutes = minutes;
 				return time;
+			} else {
+				time = null;
 			}
 		} else if(am_pm == AmPm.pm) {
-			if(hours < 12 || hours >= 1) {
+			if(hours < 12 && hours > 0 ) {
 				time.hours = hours + 12;
 				time.minutes = minutes;
 				return time;
+			} else {
+				time = null;
 			}
 		}
 		
