@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 /**
  * Class Ticket, a List of Flights in ordered sequences
- *
  */
 public class Ticket
 {
