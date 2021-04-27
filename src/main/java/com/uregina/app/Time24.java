@@ -8,8 +8,8 @@ import com.uregina.exceptions.*;
  */
 public class Time24 
 {
-	int hours;   // 0:23
-	int minutes; // 0:59
+	static int hours;   // 0:23
+	static int minutes; // 0:59
     /** 
 	 * constructor to initial Time24 object
 	 * @param hours 		hours of 24-hour time format (0:23)
@@ -42,19 +42,22 @@ public class Time24
 	 * @return 		An equavalent Time24 object
 	 * 				a null for invalid input parameters
 	 * 				No exception should be thrown
+	 * @throws InvalidTimeException 
 	 * @see 	https://www.freecodecamp.org/news/mathematics-converting-am-pm-to-24-hour-clock/
 	 * @note	(12 am and 12 pm are special cases)
 	 */
 	
-	public static Time24 toTime24(int hours, int minutes, AmPm am_pm)
+	public static Time24 toTime24(int hours, int minutes, AmPm am_pm) throws InvalidTimeException
 	{
-		Time24 time = null;
+		Time24 time = new Time24(Time24.hours, Time24.minutes);
 
 		//Todo : add your code here
 		
 		if(am_pm == AmPm.am) {
 			if(hours == 12) {
-				time.hours = hours - 12;
+				int newHours;
+				newHours = hours - 12;
+				time.hours = newHours;
 				time.minutes = minutes;
 				return time;
 			} else if(hours < 12 && hours > 0){
@@ -77,6 +80,7 @@ public class Time24
 		// End of your code
 		return time;
 	}
+	
 	/**
 	 * subtract two times
 	 * @param  t1	integer from 1:12
