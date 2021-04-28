@@ -64,20 +64,37 @@ public class Time12
 	 * calculates the minutes of subracting two valid Time12 objects 
 	 * 		assuming that both times happened in the same day.
 	 * @param t1 	12-hour time object
-	 * @param t1 	12-hour time object
+	 * @param t2 	12-hour time object
 	 * @return 		minutes equivalent of calculating (t1-t2)
 	 * 				which can be positive, zero or negative integer
 	 * usefeul functions that you may use
 	 * 		(class: Time12 , method: toTime24)
 	 * 		(class: Time24 , method: getHours)
 	 * 		(class: Time24 , method: getMinutes)
+	 * @throws InvalidTimeException 
 	*/
-	public static int subtract(Time12 t1, Time12 t2)
+	public static int subtract(Time12 t1, Time12 t2) throws InvalidTimeException
 	{
-		int difference=0;
+		int difference = 0;
 		//Todo: add your code here
+		int t1_hours = t1.getHours();
+		int t1_minutes = t1.getMinutes();
+		AmPm t1_am_pm = t1.getAM_or_PM();
+		int t2_hours = t2.getHours();
+		int t2_minutes = t2.getMinutes();
+		AmPm t2_am_pm = t2.getAM_or_PM();
+		
+		Time24 t1_time = new Time24(t1_hours, t1_minutes);
+		t1_time.toTime24(t1_hours, t1_minutes, t1_am_pm);
+		
+		Time24 t2_time = new Time24(t2_hours, t2_minutes);
+		t2_time.toTime24(t2_hours, t2_minutes, t2_am_pm);
+		
+		int t1_in_minutes = t1_hours * 60 + t1_minutes;
+		int t2_in_minutes = t2_hours * 60 + t2_minutes;
+		
+		difference = t1_in_minutes - t2_in_minutes;
 
-		// end of your code
 		return difference;
 	}
 	/**
@@ -85,8 +102,9 @@ public class Time12
 	 * @param 	t1 a Time12 object
 	 * @param 	t2 a Time12 object
 	 * @return	true if t1<t2, false otherwise
+	 * @throws InvalidTimeException 
 	*/
-	public static boolean lessThan(Time12 t1,Time12 t2)
+	public static boolean lessThan(Time12 t1,Time12 t2) throws InvalidTimeException
 	{
 		return Time12.subtract(t1,t2)<0;
 	}

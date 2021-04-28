@@ -55,4 +55,63 @@ public class AppTest
     	time.toTime24(15, 15, AmPm.pm);
     	assertTrue(time == null);
     }
+    
+    public void invalid_t1_hours_True() throws InvalidTimeException {
+    	Time12 t1 = new Time12(13,20, AmPm.am);
+    	Time12 t2 = new Time12(11,20, AmPm.am);
+    	try{
+    		int difference = Time12.subtract(t1,  t2);
+    		assertTrue(difference == 0);
+    	}
+    	catch(Exception e) {
+    		assertTrue(true);
+    		
+    	}
+    	
+    }
+    
+    public void invalid_t2_hours_True() throws InvalidTimeException {
+    	Time12 t1 = new Time12(11,20, AmPm.am);
+    	Time12 t2 = new Time12(13,20, AmPm.am);
+    	try{
+    		int difference = Time12.subtract(t1,  t2);
+    		assertTrue(difference == 0);
+    	}
+    	catch(Exception e) {
+    		assertTrue(true);
+    		
+    	}
+    	
+    }
+    
+    public void invalid_t1_minutes_True() throws InvalidTimeException {
+    	Time12 t1 = new Time12(1,80, AmPm.am);
+    	Time12 t2 = new Time12(11,20, AmPm.am);
+    	try{
+    		int difference = Time12.subtract(t1,  t2);
+    		assertTrue(difference == 0);
+    	}
+    	catch(Exception e) {
+    		assertTrue(true);
+    		
+    	}
+    	
+    }
+    
+    public void invalid_t2_minutes_True() throws InvalidTimeException {
+    	Time12 t1 = new Time12(1,20, AmPm.am);
+    	Time12 t2 = new Time12(11,80, AmPm.am);
+    	try{
+    		int difference = Time12.subtract(t1,  t2);
+    		assertTrue(difference == 0);
+    	}
+    	catch(Exception e) {
+    		assertTrue(true);
+    		
+    	}
+    	
+    }
+    
+    
+    
 }
