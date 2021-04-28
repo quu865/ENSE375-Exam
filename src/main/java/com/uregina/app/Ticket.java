@@ -35,15 +35,64 @@ public class Ticket
 	 * 		(class: Flight , method: calculateFlightTime)
 	 * 		(class: Flight , method: calculateLayoverTime)
 	 * 		(class: ticket , method: hasCyclicTrip)
+	 * @throws NegativeTimeException 
+	 * @throws MoreThanOneDayException 
 	*/
-	public static boolean checkTicket( ArrayList<Flight> ticket, int maxFlightsCount, int maxFlightTime, int maxLayoverTime, boolean hasSchengenVisa)
+	public static boolean checkTicket( ArrayList<Flight> ticket, int maxFlightsCount, int maxFlightTime, int maxLayoverTime, boolean hasSchengenVisa) throws MoreThanOneDayException, NegativeTimeException
 	{
 		//Todo: add your code here
+		String departureAirport;
+		int totalFlightTime = 0;
+		int flightTime = 0;
+		int maxFlights = 0;
+		int checkDepAirSize = 0;
+		int checkDepAirFormat = 0;
+		//int totalLayoverTime = 0;
 		
+		//Code for loop referenced from https://stackoverflow.com/questions/40336374/how-do-i-check-if-a-java-string-contains-at-least-one-capital-letter-lowercase
+		for (int i = 0; i < ticket.size(); i++) {
+			departureAirport = ticket.get(i).getDepatureAirport();
+			
+			if(departureAirport.length() != 3) {
+				checkDepAirSize = 1;
+			} else {
+				checkDepAirSize = 0;
+				for(int j = 0; j < departureAirport.length(); j++) {
+					char ch = departureAirport.charAt(j);
+					if(Character.isUpperCase(ch)) {
+						checkDepAirFormat = 0;
+					} else {
+						checkDepAirFormat = 1;
+					}
+				}
+			}
 				
+		}
+		
+		if(ticket.size() <= maxFlightsCount) {
+			maxFlights = 0;
+		} else {
+			maxFlights = 1;
+		}
+		
+		for(int k = 0; k < ticket.size(); k++) {
+			totalFlightTime += ticket.get(k).calculateFlightTime();
+		}
+		
+		if(maxFlightTime >= totalFlightTime) {
+			flightTime = 0;
+		} else {
+			flightTime = 1;
+		}
+		
+	
+		if(checkDepAirSize == 0 && checkDepAirFormat == 0 && maxFlights == 0 && flightTime == 0) {
+			return true;
+		} else {
+			return false;
+		}	
 
 		//end of your code
-		return true;
 	}
 		/**
 	 * The function checks if the ticket has a cyclic trip

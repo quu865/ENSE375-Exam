@@ -49,7 +49,7 @@ public class DateTime
 	 */
 	public static int subtract(DateTime d1,DateTime d2) throws MoreThanOneDayException
 	{
-		int diff=0;
+		int diff = 0;
 		//Todo: add your code here
 
 		//end of your code
@@ -69,8 +69,9 @@ public class DateTime
 	 * @param 	d1 a DateTime object
 	 * @param 	d2 a DateTime object
 	 * @return	true if d1<d2, false otherwise
+	 * @throws InvalidTimeException 
 	*/
-	public static boolean lessThan(DateTime d1, DateTime d2)
+	public static boolean lessThan(DateTime d1, DateTime d2) throws InvalidTimeException
 	{
 		return Date.lessThan(d1.date,d2.date) || ( Date.equal(d1.date,d2.date) && Time12.lessThan(d1.time,d2.time)) ;
 	}
