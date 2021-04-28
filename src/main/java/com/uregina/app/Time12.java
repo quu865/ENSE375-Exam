@@ -106,6 +106,9 @@ public class Time12
 	*/
 	public static boolean lessThan(Time12 t1,Time12 t2) throws InvalidTimeException
 	{
-		return Time12.subtract(t1,t2)<0;
+		if(Time12.subtract(t1,t2) < 0) {
+			return true;
+		} else
+			return false;
 	}
 }
